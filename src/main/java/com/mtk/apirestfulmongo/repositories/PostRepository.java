@@ -2,8 +2,8 @@ package com.mtk.apirestfulmongo.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.mtk.apirestfulmongo.domain.User;
+import com.mtk.apirestfulmongo.domain.Post;
 
-public interface UserRepository extends MongoRepository<User, String>{
+public interface PostRepository extends MongoRepository<Post, String>{
 
 }
