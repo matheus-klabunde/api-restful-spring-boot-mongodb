@@ -1,4 +1,4 @@
-package com.matheusklabunde.apirestfulmongo;
+package com.mtk.apirestfulmongo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
