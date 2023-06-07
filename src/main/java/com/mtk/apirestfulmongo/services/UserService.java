@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mtk.apirestfulmongo.domain.User;
+import com.mtk.apirestfulmongo.dto.UserDTO;
 import com.mtk.apirestfulmongo.repositories.UserRepository;
 import com.mtk.apirestfulmongo.services.exceptions.ObjectNotFoundException;
 
@@ -23,5 +24,13 @@ public class UserService {
 	public User findById(String id){
 		Optional<User> result = userRepository.findById(id);
 		return result.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+	
+	public User insert(User obj) {
+		return userRepository.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
 	}
 }
