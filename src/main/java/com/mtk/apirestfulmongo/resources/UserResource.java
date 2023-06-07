@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.mtk.apirestfulmongo.domain.Post;
 import com.mtk.apirestfulmongo.domain.User;
 import com.mtk.apirestfulmongo.dto.UserDTO;
 import com.mtk.apirestfulmongo.services.UserService;
@@ -36,8 +37,8 @@ public class UserResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findByid(@PathVariable String id) {
-		User result = service.findById(id);
-		return ResponseEntity.ok().body(new UserDTO(result));
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
 	@PostMapping
@@ -61,4 +62,10 @@ public class UserResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	} 
+	
+	@GetMapping(value = "/{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getPosts());
+	}
 }
